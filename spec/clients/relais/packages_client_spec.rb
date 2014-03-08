@@ -1,24 +1,19 @@
 require 'spec_helper'
 require 'capybara/rails'
-require 'rubygems/package'
 
 module Relais
   describe PackagesClient do
     let('download_path') { Rails.root.join('tmp', 'downloads', 'public.tar') }
+    let('server') { Capybara::Server.new(Capybara.app).boot }
+    let('url') { "http://#{server.host}:#{server.port}" }
     before do
       File.exists?(download_path) && File.delete(download_path)
     end
 
     it "gets packages" do
-      s = Capybara::Server.new(Capybara.app).boot
-      subject.get "http://#{s.host}:#{s.port}"
+      subject.get url
       File.exists?(download_path).should be_true
-      paths = []
-      Gem::Package::TarReader.new(File.new(download_path)) do |tar|
-        tar.each do |tarfile|
-          paths << tarfile.full_name
-        end
-      end
+      paths = ::TarHelper.read(download_path)
       paths.should_not be_empty
     end
   end
