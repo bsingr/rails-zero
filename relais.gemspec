@@ -14,6 +14,7 @@ Gem::Specification.new do |s|
   s.description = "Relais is a Rails Engine that helps generating static websites out of any Rails application."
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.0.2"
 
