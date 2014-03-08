@@ -8,7 +8,8 @@ module Relais
 
     describe "GET index" do
       it "returns package" do
-        controller.should_receive(:send_file).with('public.tar')\
+        controller.should_receive(:send_file)\
+                  .with(Rails.root.join('tmp', 'packages', 'public.tar'))\
                   .and_return{controller.render :nothing => true}
         get :index, {}, valid_session
       end
