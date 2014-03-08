@@ -19,7 +19,7 @@ module Relais
 
     it "gets packages" do
       example_path = Rails.root.join('public', "#{Time.now.to_i}.rspec").to_s
-      File.new(example_path, "w") do |f|
+      File.open(example_path, "w") do |f|
         f.puts "example"
       end
       subject.get url
