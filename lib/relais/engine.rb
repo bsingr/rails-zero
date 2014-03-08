@@ -8,5 +8,9 @@ module Relais
       g.assets false
       g.helper false
     end
+
+    initializer 'relais.set_page_cache_dir' do |app|
+      app.config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
+    end
   end
 end
