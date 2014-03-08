@@ -1,5 +1,6 @@
 require "relais/engine"
 require "relais/pages_config"
+require 'actionpack/page_caching/railtie'
 
 module Relais
   def self.configure_pages
