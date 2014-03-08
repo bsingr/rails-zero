@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relais::SiteJob do
+describe Relais::GenerateSiteJob do
   let('path') { '/examples/cached' }
   let('file_path') { Rails.root.join('public', 'deploy', 'examples', "cached.html").to_s }
   before do

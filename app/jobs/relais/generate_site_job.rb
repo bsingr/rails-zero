@@ -1,5 +1,5 @@
 module Relais
-  class SiteJob
+  class GenerateSiteJob
     def run
       Relais.pages_config.links.each do |path|
         Capybara.visit path
