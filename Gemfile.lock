@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    relais (0.0.1)
+    rails-zero (0.0.1)
       actionpack-page_caching
       rails (~> 4.0.2)
 
@@ -123,6 +123,6 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
-  relais!
+  rails-zero!
   rspec-rails
   sqlite3

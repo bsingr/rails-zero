@@ -1,9 +1,9 @@
-# Relais
+# RailsZero
 
 [![Rails Zero](./resources/logo.png)](./resources/logo.png)
 
-[![Build Status](https://travis-ci.org/dpree/relais.png)](https://travis-ci.org/dpree/relais)
-[![Code Climate](https://codeclimate.com/github/dpree/relais.png)](https://codeclimate.com/github/dpree/relais)
+[![Build Status](https://travis-ci.org/dpree/rails-zero.png)](https://travis-ci.org/dpree/rails-zero)
+[![Code Climate](https://codeclimate.com/github/dpree/rails-zero.png)](https://codeclimate.com/github/dpree/rails-zero)
 
 This is work in progress. Build for and extracted from [Cocoa-Tree](http://cocoa-tree.github.io).
 
