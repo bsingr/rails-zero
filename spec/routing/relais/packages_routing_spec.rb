@@ -11,7 +11,7 @@ module Relais
       end
 
       it "routes to #new" do
-        get("/packages").should route_to("relais/packages#new")
+        get("/packages/new").should route_to("relais/packages#new")
       end
 
     end
