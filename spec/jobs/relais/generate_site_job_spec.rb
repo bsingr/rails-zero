@@ -4,9 +4,10 @@ describe Relais::GenerateSiteJob do
   let('path') { '/examples/cached' }
   let('file_path') { Rails.root.join('public', 'deploy', 'examples', "cached.html").to_s }
   before do
-    if File.exists?(file_path)
-      File.delete(file_path)
-    end
+    ::CacheHelper.clean
+  end
+  after do
+    ::CacheHelper.clean
   end
   it 'queries all pages' do
     Relais.configure_pages do |c|

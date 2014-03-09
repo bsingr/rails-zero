@@ -8,13 +8,11 @@ module Relais
     let('url') { "http://#{server.host}:#{server.port}" }
     
     before do
-      File.exists?(download_path) && File.delete(download_path)
+      FileUtils.rm_rf(download_path)
     end
 
     after do
-      Dir[Rails.root.join('public', '*.rspec')].each do |f|
-        File.delete(f)
-      end
+      ::CacheHelper.clean
     end
 
     it "gets packages" do
