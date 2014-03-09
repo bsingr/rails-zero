@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Relais::CleanSiteJob do
   let('file_path') { Rails.root.join('public', 'deploy', 'examples', "cached.html").to_s }
   before do
+    FileUtils.mkdir_p(File.dirname(file_path))
     FileUtils.touch(file_path)
   end
   after do
