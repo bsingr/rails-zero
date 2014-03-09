@@ -1,5 +1,3 @@
-# RailsZero
-
 [![Rails Zero](./resources/logo.png)](./resources/logo.png)
 
 [![Build Status](https://travis-ci.org/dpree/rails-zero.png)](https://travis-ci.org/dpree/rails-zero)
