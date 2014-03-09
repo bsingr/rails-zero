@@ -3,13 +3,12 @@ require 'spec_helper'
 describe Relais::CleanSiteJob do
   let('file_path') { Rails.root.join('public', 'deploy', 'examples', "cached.html").to_s }
   before do
+    FileUtils.rm_rf(file_path)
     FileUtils.mkdir_p(File.dirname(file_path))
     FileUtils.touch(file_path)
   end
   after do
-    if File.exists?(file_path)
-      File.delete(file_path)
-    end
+    FileUtils.rm_rf(file_path)
   end
   it 'queries all pages' do
     File.exists?(file_path).should be_true
