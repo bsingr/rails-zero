@@ -6,7 +6,8 @@ module Relais
       remote_url = File.join(url, packages_path)
       destination = Rails.root.join('tmp', 'downloads', 'public.tar')
       FileUtils.mkdir_p(File.dirname(destination))
-      Kernel.system "curl #{remote_url} > #{destination}"
+      command = "curl #{remote_url} > #{destination}"
+      stdout_str, stderr_str, status = Open3.capture3(command)
     end
   end
 end

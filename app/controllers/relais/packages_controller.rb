@@ -4,7 +4,8 @@ module Relais
   class PackagesController < ApplicationController
     def index
       FileUtils.mkdir_p(File.dirname(archive_path))
-      system "tar -cf '#{archive_path}' '#{public_path}/'"
+      command = "tar -cf '#{archive_path}' '#{public_path}/'"
+      stdout_str, stderr_str, status = Open3.capture3(command)
       send_file archive_path
     end
 
