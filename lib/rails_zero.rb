@@ -12,4 +12,8 @@ module RailsZero
   def self.pages_config
     @config ||= PagesConfig.new
   end
+
+  def self.path *args
+    File.expand_path(File.join('..', '..', *args), __FILE__)
+  end
 end
