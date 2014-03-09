@@ -8,6 +8,10 @@ module RailsZero
     let('url') { "http://#{server.host}:#{server.port}" }
     
     before do
+      RailsZero.pages_config.url = url
+    end
+
+    before do
       FileUtils.rm_rf(download_path)
     end
 
@@ -20,7 +24,7 @@ module RailsZero
       File.open(example_path, "w") do |f|
         f.puts "example"
       end
-      subject.get url
+      subject.get
       File.exists?(download_path).should be_true
       paths = ::TarHelper.read(download_path)
       paths.should_not be_empty

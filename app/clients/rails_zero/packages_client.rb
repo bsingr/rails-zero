@@ -2,8 +2,8 @@ require_dependency "rails_zero/base_client"
 
 module RailsZero
   class PackagesClient < BaseClient
-    def get url
-      remote_url = File.join(url, packages_path)
+    def get
+      remote_url = File.join(RailsZero.pages_config.url, packages_path)
       destination = Rails.root.join('tmp', 'downloads', 'public.tar')
       FileUtils.mkdir_p(File.dirname(destination))
       command = "curl #{remote_url} > #{destination}"

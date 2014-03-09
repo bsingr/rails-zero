@@ -1,5 +1,11 @@
 module RailsZero
   class PagesConfig
+    attr_accessor :url
+
+    def url
+      @url ||= 'http://localhost:3000'
+    end
+
     def links
       @links ||= []
     end

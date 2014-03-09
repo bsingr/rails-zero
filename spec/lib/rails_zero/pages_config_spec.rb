@@ -8,4 +8,9 @@ describe RailsZero::PagesConfig do
     Rails.root.join('public/500.html').to_s,
     Rails.root.join('public/favicon.ico').to_s
   ] }
+  its('url') { should == 'http://localhost:3000' }
+  it 'can change url' do
+    subject.url = 'foo'
+    subject.url.should == 'foo'
+  end
 end
