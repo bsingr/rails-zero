@@ -10,6 +10,10 @@ module Relais
         get("/packages").should route_to("relais/packages#index")
       end
 
+      it "routes to #new" do
+        get("/packages").should route_to("relais/packages#new")
+      end
+
     end
   end
 end

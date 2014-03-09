@@ -8,6 +8,11 @@ module Relais
       send_file archive_path
     end
 
+    def new
+      CleanSiteJob.new.run
+      head :ok
+    end
+
   private
 
     def public_path

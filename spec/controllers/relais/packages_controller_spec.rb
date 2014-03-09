@@ -14,5 +14,12 @@ module Relais
         get :index, {}, valid_session
       end
     end
+
+    describe "GET new" do
+      it 'runs clean site job' do
+        expect_any_instance_of(CleanSiteJob).to receive(:run).once
+        get :new, {}, valid_session
+      end
+    end
   end
 end
