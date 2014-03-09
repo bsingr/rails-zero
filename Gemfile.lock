@@ -3,6 +3,7 @@ PATH
   specs:
     rails-zero (0.0.1)
       actionpack-page_caching
+      capybara
       rails (~> 4.0.2)
 
 GEM
@@ -122,7 +123,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capybara
   rails-zero!
   rspec-rails
   sqlite3
