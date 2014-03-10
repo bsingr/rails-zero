@@ -3,7 +3,7 @@ require 'capybara/rails'
 
 module RailsZero
   describe PackagesClient do
-    let('download_path') { Rails.root.join('tmp', 'downloads', 'public.tar') }
+    let('download_path') { Rails.root.join('tmp', 'rails_zero', 'downloads', 'public.tar').to_s }
     let('server') { Capybara::Server.new(Capybara.app).boot }
     let('url') { "http://#{server.host}:#{server.port}" }
     
@@ -18,6 +18,8 @@ module RailsZero
     after do
       ::CacheHelper.clean
     end
+
+    its('download_destination') { should == download_path }
 
     it "gets packages" do
       example_path = Rails.root.join('public', "#{Time.now.to_i}.rspec").to_s
