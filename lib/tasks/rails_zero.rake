@@ -3,4 +3,11 @@ namespace :rails_zero do
   task :generate => :environment do
     RailsZero::GenerateSiteJob.new.run
   end
+
+  namespace :deploy do
+    desc 'Git deployment'
+    task :git do
+      RailsZero::GitDeployer.new.run
+    end
+  end
 end

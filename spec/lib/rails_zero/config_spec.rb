@@ -13,4 +13,5 @@ describe RailsZero::Config do
     subject.url = 'foo'
     subject.url.should == 'foo'
   end
+  its('git_binary') { should == File.expand_path(File.join('..', '..', '..', '..', 'bin', 'git'), __FILE__) }
 end

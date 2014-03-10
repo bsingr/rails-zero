@@ -1,9 +1,10 @@
 module RailsZero
   class GitDeployer
-    attr_accessor :git_remote_url, :git_cmd
-
     def run
-
+      remove_dir
+      create_dir
+      extract_package
+      push_package
     end
 
     def package_path
@@ -36,17 +37,21 @@ module RailsZero
     def push_package
       Dir.chdir(extracted_package_path) do
         commands = []
-        commands << "#{git_cmd} init"
-        commands << "#{git_cmd} remote add origin #{git_remote_url}"
-        commands << "#{git_cmd} add --all ."
-        commands << "#{git_cmd} commit -m \"Deploy.\""
-        commands << "#{git_cmd} push -u --force origin master"
+        commands << "#{git_binary} init"
+        commands << "#{git_binary} remote add origin #{git_remote_url}"
+        commands << "#{git_binary} add --all ."
+        commands << "#{git_binary} commit -m \"Deploy.\""
+        commands << "#{git_binary} push -u --force origin master"
         stdout_str, stderr_str, status = Open3.capture3(commands.join(" && "))
       end
     end
 
-    def git_cmd
-      @git_cmd ||= 'git'
+    def git_binary
+      RailsZero.config.git_binary
+    end
+
+    def git_remote_url
+      RailsZero.config.git_remote_url
     end
   end
 end

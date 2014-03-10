@@ -1,6 +1,6 @@
 module RailsZero
   class Config
-    attr_accessor :url
+    attr_accessor :url, :git_remote_url, :git_binary
 
     def url
       @url ||= 'http://localhost:3000'
@@ -16,6 +16,10 @@ module RailsZero
           Rails.root.join('public', f).to_s
         end
       end
+    end
+
+    def git_binary
+      @git_binary ||= File.expand_path(File.join('..', '..', '..', 'bin', 'git'), __FILE__)
     end
   end
 end
