@@ -8,7 +8,7 @@ module RailsZero
     let('url') { "http://#{server.host}:#{server.port}" }
     
     before do
-      RailsZero.pages_config.url = url
+      RailsZero.config.url = url
     end
 
     before do

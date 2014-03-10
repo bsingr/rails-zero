@@ -20,7 +20,7 @@ describe RailsZero::GenerateSiteJob do
   end
 
   it 'executes javascript with poltergeist' do
-    RailsZero.pages_config.url = url
+    RailsZero.config.url = url
     Capybara.current_driver = :poltergeist
     subject.run
     File.exists?(html_file).should be_true

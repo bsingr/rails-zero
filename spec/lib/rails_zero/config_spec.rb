@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RailsZero::PagesConfig do
+describe RailsZero::Config do
   its('links') { should == [] }
   its('paths_to_except_from_cleanup') { should == [
     Rails.root.join('public/404.html').to_s,

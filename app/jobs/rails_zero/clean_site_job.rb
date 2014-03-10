@@ -11,7 +11,7 @@ module RailsZero
   private
 
     def excluded_files
-      RailsZero.pages_config.paths_to_except_from_cleanup
+      RailsZero.config.paths_to_except_from_cleanup
     end
   end
 end

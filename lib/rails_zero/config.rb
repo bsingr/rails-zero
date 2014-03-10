@@ -1,5 +1,5 @@
 module RailsZero
-  class PagesConfig
+  class Config
     attr_accessor :url
 
     def url

@@ -1,16 +1,16 @@
 require "rails_zero/engine"
-require "rails_zero/pages_config"
+require "rails_zero/config"
 require 'actionpack/page_caching/railtie'
 require 'capybara/dsl'
 require 'open3'
 
 module RailsZero
-  def self.configure_pages
-    yield pages_config
+  def self.configure
+    yield config
   end
 
-  def self.pages_config
-    @config ||= PagesConfig.new
+  def self.config
+    @config ||= Config.new
   end
 
   def self.path *args
