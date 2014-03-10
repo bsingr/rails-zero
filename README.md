@@ -1,5 +1,9 @@
 [![Rails Zero](./resources/logo.png)](./resources/logo.png)
 
+# Rails Zero
+
+Static site generation the Rails way.
+
 [![Build Status](https://travis-ci.org/dpree/rails-zero.png)](https://travis-ci.org/dpree/rails-zero)
 [![Code Climate](https://codeclimate.com/github/dpree/rails-zero.png)](https://codeclimate.com/github/dpree/rails-zero)
 [![Gem Version](https://badge.fury.io/rb/rails-zero.png)](http://badge.fury.io/rb/rails-zero)
