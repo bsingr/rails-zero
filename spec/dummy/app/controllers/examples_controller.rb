@@ -2,6 +2,9 @@ class ExamplesController < ApplicationController
   caches_page :cached
 
   def cached
-    render :text => 'cached example'
+    respond_to do |format|
+      format.html
+      format.json { render :json => ['cached example'] }
+    end
   end
 end
