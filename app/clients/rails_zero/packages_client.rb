@@ -7,7 +7,7 @@ module RailsZero
     end
 
     def get
-      remote_url = File.join(RailsZero.config.backend_url, packages_path)
+      remote_url = File.join(RailsZero.config.backend.url, packages_path)
       FileUtils.mkdir_p(File.dirname(download_destination))
       command = "curl #{remote_url} > #{download_destination}"
       stdout_str, stderr_str, status = Open3.capture3(command)

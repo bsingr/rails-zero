@@ -1,11 +1,20 @@
 module RailsZero
   class Config
-    attr_accessor :backend_url,
-                  :git_remote_url,
+    class Backend
+      attr_accessor :url
+
+      def url
+        @url ||= 'http://localhost:3000'
+      end
+    end
+
+    attr_reader :backend
+
+    attr_accessor :git_remote_url,
                   :git_binary
 
-    def backend_url
-      @backend_url ||= 'http://localhost:3000'
+    def initialize
+      @backend = Backend.new
     end
 
     def links
