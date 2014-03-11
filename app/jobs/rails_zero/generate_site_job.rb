@@ -1,7 +1,10 @@
 module RailsZero
   class GenerateSiteJob
+    include RailsZero::Engine.routes.url_helpers
+
     def run
       Capybara.app_host = RailsZero.config.url
+      Capybara.visit packages_new_path
       RailsZero.config.links.each do |path|
         Capybara.visit path
       end
