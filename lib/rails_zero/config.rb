@@ -1,9 +1,11 @@
 module RailsZero
   class Config
-    attr_accessor :url, :git_remote_url, :git_binary
+    attr_accessor :backend_url,
+                  :git_remote_url,
+                  :git_binary
 
-    def url
-      @url ||= 'http://localhost:3000'
+    def backend_url
+      @backend_url ||= 'http://localhost:3000'
     end
 
     def links

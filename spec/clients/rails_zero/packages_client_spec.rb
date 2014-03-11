@@ -8,7 +8,7 @@ module RailsZero
     let('url') { "http://#{server.host}:#{server.port}" }
     
     before do
-      RailsZero.config.url = url
+      RailsZero.config.backend_url = url
     end
 
     before do
