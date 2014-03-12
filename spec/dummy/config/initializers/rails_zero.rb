@@ -1,2 +1,2 @@
 require 'rails_zero/drivers/poltergeist'
-RailsZero.config.site.links << '/examples/cached'
+RailsZero.config.site.paths << '/examples/cached'

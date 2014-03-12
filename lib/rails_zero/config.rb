@@ -19,8 +19,8 @@ module RailsZero
     end
 
     class Site
-      def links
-        @links ||= []
+      def paths
+        @paths ||= []
       end
 
       def paths_to_except_from_cleanup
