@@ -18,24 +18,28 @@ module RailsZero
       end
     end
 
+    class Site
+      def links
+        @links ||= []
+      end
+
+      def paths_to_except_from_cleanup
+        @paths_to_except_from_cleanup ||= begin
+          %w[ 404.html 422.html 500.html favicon.ico ].map do |f|
+            Rails.root.join('public', f).to_s
+          end
+        end
+      end
+    end
+
     attr_reader :backend,
-                :deployment
+                :deployment,
+                :site
 
     def initialize
       @backend = Backend.new
       @deployment = GitDeployment.new
-    end
-
-    def links
-      @links ||= []
-    end
-
-    def paths_to_except_from_cleanup
-      @paths_to_except_from_cleanup ||= begin
-        %w[ 404.html 422.html 500.html favicon.ico ].map do |f|
-          Rails.root.join('public', f).to_s
-        end
-      end
+      @site = Site.new
     end
   end
 end

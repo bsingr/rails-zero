@@ -5,7 +5,7 @@ module RailsZero
     def run
       Capybara.app_host = RailsZero.config.backend.url
       Capybara.visit packages_new_path
-      RailsZero.config.links.each do |path|
+      RailsZero.config.site.links.each do |path|
         Capybara.visit path
       end
       Capybara.reset_sessions!
