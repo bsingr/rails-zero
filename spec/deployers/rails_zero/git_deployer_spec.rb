@@ -23,8 +23,8 @@ describe RailsZero::GitDeployer do
     File.exists?(dir).should be_true
   end
 
-  its('git_binary') { should == RailsZero.config.git_binary }
-  its('git_remote_url') { should == RailsZero.config.git_remote_url }
+  its('git_binary') { should == RailsZero.config.deployment.git_binary }
+  its('git_remote_url') { should == RailsZero.config.deployment.url }
   its('package_path') { should == download_destination }
   its('extracted_package_path') { should == extracted_package_path }
 
@@ -39,7 +39,7 @@ describe RailsZero::GitDeployer do
 
     FileUtils.mkdir_p(git_remote_url)
     Dir.chdir(git_remote_url) { Open3.capture3('git init --bare') }
-    RailsZero.config.git_remote_url = git_remote_url
+    RailsZero.config.deployment.url = git_remote_url
     
     FileUtils.mkdir_p(extracted_package_path)
     File.open(File.join(extracted_package_path, 'example-file'), 'w') do |f|

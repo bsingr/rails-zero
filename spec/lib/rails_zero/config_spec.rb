@@ -13,5 +13,6 @@ describe RailsZero::Config do
     subject.backend.url = 'foo'
     subject.backend.url.should == 'foo'
   end
-  its('git_binary') { should == File.expand_path(File.join('..', '..', '..', '..', 'bin', 'git'), __FILE__) }
+  its('deployment.git_binary') { should == File.expand_path(File.join('..', '..', '..', '..', 'bin', 'git'), __FILE__) }
+  its('deployment.url') { should == nil }
 end

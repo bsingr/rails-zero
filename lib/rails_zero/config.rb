@@ -8,13 +8,22 @@ module RailsZero
       end
     end
 
-    attr_reader :backend
+    class GitDeployment
+      attr_accessor :url,
+                    :git_binary
 
-    attr_accessor :git_remote_url,
-                  :git_binary
+      def git_binary
+        @git_binary ||=
+          File.expand_path(File.join('..', '..', '..', 'bin', 'git'), __FILE__)
+      end
+    end
+
+    attr_reader :backend,
+                :deployment
 
     def initialize
       @backend = Backend.new
+      @deployment = GitDeployment.new
     end
 
     def links
@@ -27,10 +36,6 @@ module RailsZero
           Rails.root.join('public', f).to_s
         end
       end
-    end
-
-    def git_binary
-      @git_binary ||= File.expand_path(File.join('..', '..', '..', 'bin', 'git'), __FILE__)
     end
   end
 end

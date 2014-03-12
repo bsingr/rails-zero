@@ -47,11 +47,11 @@ module RailsZero
     end
 
     def git_binary
-      RailsZero.config.git_binary
+      RailsZero.config.deployment.git_binary
     end
 
     def git_remote_url
-      RailsZero.config.git_remote_url
+      RailsZero.config.deployment.url
     end
   end
 end
