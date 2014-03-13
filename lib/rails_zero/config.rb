@@ -24,8 +24,18 @@ module RailsZero
       def paths
         paths = []
         paths.concat(@paths) if defined?(@paths)
-        paths.concat(collect_paths_from_paths_builders)
+        paths.concat(map_paths_from_paths_builders)
         paths.flatten
+      end
+
+      def add_paths paths
+        @paths ||= []
+        @paths << paths
+      end
+
+      def add_path path
+        @paths ||= []
+        @paths << path
       end
 
       def define_lazy_paths &block
@@ -42,7 +52,7 @@ module RailsZero
 
     private
 
-      def collect_paths_from_paths_builders
+      def map_paths_from_paths_builders
         if defined? @paths_builders
           @paths_builders.map{|b| b.call}
         else
