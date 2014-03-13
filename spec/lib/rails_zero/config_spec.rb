@@ -15,4 +15,27 @@ describe RailsZero::Config do
   end
   its('deployment.git_binary') { should == File.expand_path(File.join('..', '..', '..', '..', 'bin', 'git'), __FILE__) }
   its('deployment.url') { should == nil }
+
+  describe '.paths' do
+    it 'accepts procs that return strings' do
+      subject.site.paths_builders = [->{'/foo'}]
+      subject.site.paths.should == %w[ /foo ]
+    end
+
+    it 'accepts procs that return arrays' do
+      subject.site.paths_builders = [->{%w[ /foo /bar ]}]
+      subject.site.paths.should == %w[ /foo /bar ]
+    end
+
+    it 'accepts strings' do
+      subject.site.paths = %w[ /foo ]
+      subject.site.paths.should == %w[ /foo ]
+    end
+
+    it 'accepts strings and procs' do
+      subject.site.paths = %w[ /foo /bar ]
+      subject.site.paths_builders = [->{'/baz'}]
+      subject.site.paths.should == %w[ /foo /bar /baz ]
+    end
+  end
 end

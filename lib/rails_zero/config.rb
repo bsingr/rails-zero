@@ -19,8 +19,17 @@ module RailsZero
     end
 
     class Site
+      attr_writer :paths, :paths_builders
+
       def paths
-        @paths ||= []
+        paths = []
+        paths.concat(@paths) if defined?(@paths)
+        paths.concat(collect_paths_from_paths_builders)
+        paths.flatten
+      end
+
+      def define_lazy_paths &block
+        @lazy_paths = block
       end
 
       def paths_to_except_from_cleanup
@@ -28,6 +37,16 @@ module RailsZero
           %w[ 404.html 422.html 500.html favicon.ico ].map do |f|
             Rails.root.join('public', f).to_s
           end
+        end
+      end
+
+    private
+
+      def collect_paths_from_paths_builders
+        if defined? @paths_builders
+          @paths_builders.map{|b| b.call}
+        else
+          []
         end
       end
     end
