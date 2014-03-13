@@ -5,8 +5,13 @@ namespace :rails_zero do
   end
 
   namespace :deploy do
+    desc 'Download'
+    task :prepare => :environment do
+      RailsZero::PackagesClient.new.get
+    end
+
     desc 'Git deployment'
-    task :git do
+    task :git => :prepare do
       RailsZero::GitDeployer.new.run
     end
   end

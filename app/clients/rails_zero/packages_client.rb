@@ -11,6 +11,7 @@ module RailsZero
       FileUtils.mkdir_p(File.dirname(download_destination))
       command = "curl #{remote_url} > #{download_destination}"
       stdout_str, stderr_str, status = Open3.capture3(command)
+      Rails.logger.error stderr_str
     end
   end
 end
