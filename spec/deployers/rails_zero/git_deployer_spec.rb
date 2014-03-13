@@ -29,9 +29,13 @@ describe RailsZero::GitDeployer do
   its('extracted_package_path') { should == extracted_package_path }
 
   it 'extract_package' do
-    FileUtils.cp(AssetsHelper.path('example.tar'), subject.package_path)
+    Dir.chdir(AssetsHelper.path) do
+      l, e, s = Open3.capture3("tar -cf #{subject.package_path} public")
+      e.should == ''
+    end
     subject.extract_package
-    File.exists?(File.join(dir, 'example', 'example-file')).should be_true
+    File.exists?(File.join(dir, 'public', 'index.html')).should be_true
+    File.exists?(extracted_package_path).should be_true
   end
 
   it 'removes, creates dir on extract' do
