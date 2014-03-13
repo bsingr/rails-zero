@@ -31,6 +31,9 @@ module RailsZero
       paths = ::TarHelper.read(download_path)
       paths.should_not be_empty
       paths.map{|p| File.basename(p)}.should include(File.basename(example_path))
+      paths.each do |p|
+        p.should_not include(Rails.root.to_s)
+      end
     end
   end
 end

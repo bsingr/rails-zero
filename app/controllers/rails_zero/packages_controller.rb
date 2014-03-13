@@ -4,8 +4,11 @@ module RailsZero
   class PackagesController < ApplicationController
     def index
       FileUtils.mkdir_p(File.dirname(archive_path))
-      command = "tar -cf '#{archive_path}' '#{public_path}/'"
-      stdout_str, stderr_str, status = Open3.capture3(command)
+      Dir.chdir(Rails.root) do
+        command = "tar -cf '#{archive_path}' 'public/'"
+        stdout_str, stderr_str, status = Open3.capture3(command)
+
+      end
       send_file archive_path
     end
 
@@ -15,10 +18,6 @@ module RailsZero
     end
 
   private
-
-    def public_path
-      Rails.root.join('public')
-    end
 
     def archive_path
       Rails.root.join('tmp', 'packages', 'public.tar')
