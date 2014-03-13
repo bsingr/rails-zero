@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails-zero (0.0.4)
+    rails-zero (0.0.5)
       actionpack-page_caching
       capybara
       rails (~> 4.0.2)
@@ -105,7 +105,7 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
-    sprockets (2.11.0)
+    sprockets (2.12.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
