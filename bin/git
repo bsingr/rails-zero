@@ -5,7 +5,7 @@ set -u
 SCRIPTS_DIR=$(dirname $0)
 
 KEY_PATH=$HOME/.rails_zero.pkey
-echo $RAILS_ZERO_GIT_DEPLOYER_SSH_KEY_CONTENT | sed -e 's/\s*;\s*/\n/g' /dev/stdin > $KEY_PATH
+echo -e $RAILS_ZERO_GIT_DEPLOYER_SSH_KEY_CONTENT > $KEY_PATH
 
 SSH_KEYFILE=$KEY_PATH GIT_SSH=$SCRIPTS_DIR/ssh git $@
 
