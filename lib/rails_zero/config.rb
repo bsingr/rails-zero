@@ -48,7 +48,6 @@ module RailsZero
               422.html
               500.html
               favicon.ico
-              robots.txt
               ].map do |f|
             Rails.root.join('public', f).to_s
           end

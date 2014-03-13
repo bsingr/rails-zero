@@ -9,7 +9,6 @@ describe RailsZero::Config do
     Rails.root.join('public/422.html').to_s,
     Rails.root.join('public/500.html').to_s,
     Rails.root.join('public/favicon.ico').to_s,
-    Rails.root.join('public/robots.txt').to_s
   ] }
   its('backend.url') { should == 'http://localhost:3000' }
   it 'can change backend.url' do
