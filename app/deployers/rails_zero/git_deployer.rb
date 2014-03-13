@@ -1,8 +1,6 @@
 module RailsZero
   class GitDeployer
     def run
-      remove_dir
-      create_dir
       extract_package
       push_package
     end

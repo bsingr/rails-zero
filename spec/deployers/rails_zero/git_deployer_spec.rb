@@ -34,6 +34,12 @@ describe RailsZero::GitDeployer do
     File.exists?(File.join(dir, 'example', 'example-file')).should be_true
   end
 
+  it 'removes, creates dir on extract' do
+    subject.should_receive(:remove_dir).ordered
+    subject.should_receive(:create_dir).ordered
+    subject.extract_package
+  end
+
   it 'push_package' do
     ENV['RAILS_ZERO_GIT_DEPLOYER_SSH_KEY_CONTENT'] = 'foo'
 
@@ -56,8 +62,6 @@ describe RailsZero::GitDeployer do
   end
 
   it 'removes, creates, extracts and pushs the package' do
-    subject.should_receive(:remove_dir).ordered
-    subject.should_receive(:create_dir).ordered
     subject.should_receive(:extract_package).ordered
     subject.should_receive(:push_package).ordered
     subject.run
