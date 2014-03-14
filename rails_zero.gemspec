@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.summary     = "RailsZero is a static site generator based on Rails"
   s.description = "RailsZero is a Rails Engine that helps generating static websites out of any Rails application."
 
-  s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,bin,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.0.2"
