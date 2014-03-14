@@ -1,6 +1,8 @@
 module RailsZero
   class GitDeployer
     def run
+      remove_dir
+      create_dir
       extract_package
       push_package
     end
@@ -26,10 +28,13 @@ module RailsZero
     end
 
     def extract_package
-      remove_dir
-      create_dir
+      raise RailsZero::NoPackageError, "Package #{package_path} does not exist"\
+        unless File.exists?(package_path)
       command = "tar -xf #{package_path} -C #{dir}"
       stdout_str, stderr_str, status = Open3.capture3(command)
+      unless stderr_str.empty?
+        raise RailsZero::Error, stderr_str
+      end
     end
 
     def push_package

@@ -29,19 +29,16 @@ describe RailsZero::GitDeployer do
   its('extracted_package_path') { should == extracted_package_path }
 
   it 'extract_package' do
-    Dir.chdir(AssetsHelper.path) do
-      l, e, s = Open3.capture3("tar -cf #{subject.package_path} public")
-      e.should == ''
-    end
+    FileUtils.mkdir_p(dir)
+    TarHelper.create(subject.package_path, AssetsHelper.path('public'))
     subject.extract_package
     File.exists?(File.join(dir, 'public', 'index.html')).should be_true
     File.exists?(extracted_package_path).should be_true
   end
 
-  it 'removes, creates dir on extract' do
-    subject.should_receive(:remove_dir).ordered
-    subject.should_receive(:create_dir).ordered
-    subject.extract_package
+  it 'raise error on extract_package' do
+    FileUtils.rm_rf(subject.package_path)
+    expect{ subject.extract_package }.to raise_error(RailsZero::NoPackageError)
   end
 
   it 'push_package' do
@@ -71,6 +68,8 @@ describe RailsZero::GitDeployer do
   end
 
   it 'removes, creates, extracts and pushs the package' do
+    subject.should_receive(:remove_dir).ordered
+    subject.should_receive(:create_dir).ordered
     subject.should_receive(:extract_package).ordered
     subject.should_receive(:push_package).ordered
     subject.run
