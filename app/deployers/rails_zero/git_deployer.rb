@@ -28,7 +28,7 @@ module RailsZero
     end
 
     def extract_package
-      raise RailsZero::NoPackageError, "Package #{package_path} does not exist"\
+      raise RailsZero::MissingPackageError, "Package #{package_path} does not exist"\
         unless File.exists?(package_path)
       command = "tar -xf #{package_path} -C #{dir}"
       stdout_str, stderr_str, status = Open3.capture3(command)

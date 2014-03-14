@@ -38,7 +38,7 @@ describe RailsZero::GitDeployer do
 
   it 'raise error on extract_package' do
     FileUtils.rm_rf(subject.package_path)
-    expect{ subject.extract_package }.to raise_error(RailsZero::NoPackageError)
+    expect{ subject.extract_package }.to raise_error(RailsZero::MissingPackageError)
   end
 
   it 'push_package' do

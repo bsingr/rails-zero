@@ -2,6 +2,6 @@ module RailsZero
   class Error < StandardError
   end
 
-  class NoPackageError < Error
+  class MissingPackageError < Error
   end
 end
