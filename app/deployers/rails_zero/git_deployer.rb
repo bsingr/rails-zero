@@ -32,9 +32,7 @@ module RailsZero
         unless File.exists?(package_path)
       command = "tar -xf #{package_path} -C #{dir}"
       stdout_str, stderr_str, status = Open3.capture3(command)
-      unless stderr_str.empty?
-        raise RailsZero::Error, stderr_str
-      end
+      raise RailsZero::Error, stderr_str if status.exitstatus > 0
     end
 
     def push_package
