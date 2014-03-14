@@ -67,6 +67,13 @@ describe RailsZero::GitDeployer do
     expect{ subject.push_package }.to raise_error(RailsZero::Error)
   end
 
+  it 'raise git error on push_package' do
+    RailsZero.config.deployment.url = 'http://example.com'
+    FileUtils.rm_rf(extracted_package_path)
+    FileUtils.mkdir_p(extracted_package_path)
+    expect{ subject.push_package }.to raise_error(RailsZero::GitError)
+  end
+
   it 'removes, creates, extracts and pushs the package' do
     subject.should_receive(:remove_dir).ordered
     subject.should_receive(:create_dir).ordered

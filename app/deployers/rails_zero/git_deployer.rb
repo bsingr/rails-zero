@@ -46,6 +46,10 @@ module RailsZero
         commands << "#{git_binary} commit -m \"Deploy.\""
         commands << "#{git_binary} push -u --force origin master"
         stdout_str, stderr_str, status = Open3.capture3(commands.join(" && "))
+        raise RailsZero::GitError,
+          "Cannot git-deploy #{extracted_package_path} (binary=#{git_binary} "\
+          "remote=#{git_remote_url}): #{stdout_str} #{stderr_str}" \
+          if status.exitstatus > 0
       end
     rescue Errno::ENOENT => e
       raise RailsZero::Error, e.message

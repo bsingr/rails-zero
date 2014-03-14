@@ -4,4 +4,8 @@ module RailsZero
 
   class MissingPackageError < Error
   end
+
+  class GitError < Error
+
+  end
 end
