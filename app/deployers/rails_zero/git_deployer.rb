@@ -42,6 +42,8 @@ module RailsZero
         commands << "#{git_binary} push -u --force origin master"
         stdout_str, stderr_str, status = Open3.capture3(commands.join(" && "))
       end
+    rescue Errno::ENOENT => e
+      raise RailsZero::Error, e.message
     end
 
     def git_binary

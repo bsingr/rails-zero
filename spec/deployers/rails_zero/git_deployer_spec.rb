@@ -65,6 +65,11 @@ describe RailsZero::GitDeployer do
     end
   end
 
+  it 'raise error on push_package' do
+    FileUtils.rm_rf(extracted_package_path)
+    expect{ subject.push_package }.to raise_error(RailsZero::Error)
+  end
+
   it 'removes, creates, extracts and pushs the package' do
     subject.should_receive(:extract_package).ordered
     subject.should_receive(:push_package).ordered

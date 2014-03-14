@@ -1,5 +1,6 @@
 require "rails_zero/engine"
 require "rails_zero/config"
+require "rails_zero/errors"
 require 'actionpack/page_caching/railtie'
 require 'capybara/dsl'
 require 'open3'
