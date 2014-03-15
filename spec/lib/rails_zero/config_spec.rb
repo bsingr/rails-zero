@@ -4,12 +4,10 @@ describe RailsZero::Config do
   subject('config') { described_class.new }
 
   its('site.paths') { should == [] }
-  its('site.paths_to_except_from_cleanup') { should == [
-    Rails.root.join('public/404.html').to_s,
-    Rails.root.join('public/422.html').to_s,
-    Rails.root.join('public/500.html').to_s,
-    Rails.root.join('public/favicon.ico').to_s,
-  ] }
+  its('site.paths_to_except_from_cleanup') { should == %w[ 404.html
+                                                           422.html
+                                                           500.html
+                                                           favicon.ico ] }
   its('backend.url') { should == 'http://localhost:3000' }
   it 'can change backend.url' do
     subject.backend.url = 'foo'
