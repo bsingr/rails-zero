@@ -54,6 +54,16 @@ And it adds an initializer to `config/initializers/rails_zero.rb`:
       # config.site.paths_to_except_from_cleanup << %[ robots.txt ]
     end
 
+## Git Deployment
+
+For some environments (like heroku) it is not possible to write keys out to the file system. One workaround is to store the ssh key in the environment.
+
+The following script reads the content of your private key from `~/.ssh/id_rsa_rails_zero_deploy` and appends it to `.env`:
+
+    echo "RAILS_ZERO_GIT_DEPLOYER_SSH_KEY_CONTENT=\"$(perl -p -e 's/\n/\\n/' ~/.ssh/id_rsa_rails_zero_deploy)\"" >> .env
+
+For heroku I recommend using (heroku-config)[https://github.com/ddollar/heroku-config] keep your local `.env` file synchronized with heroku (via push / pull).
+
 ## Origin
 
 This is work in progress. Build for and extracted from [Cocoa-Tree](http://cocoa-tree.github.io).
