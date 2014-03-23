@@ -7,7 +7,8 @@ describe RailsZero::Config do
   its('site.paths_to_except_from_cleanup') { should == %w[ 404.html
                                                            422.html
                                                            500.html
-                                                           favicon.ico ] }
+                                                           favicon.ico
+                                                           assets ] }
   its('backend.url') { should == 'http://localhost:3000' }
   it 'can change backend.url' do
     subject.backend.url = 'foo'
