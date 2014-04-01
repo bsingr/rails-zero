@@ -8,6 +8,7 @@ describe RailsZero::Config do
                                                            422.html
                                                            500.html
                                                            favicon.ico
+                                                           robots.txt
                                                            assets ] }
   its('backend.url') { should == 'http://localhost:3000' }
   it 'can change backend.url' do

@@ -48,6 +48,7 @@ module RailsZero
           422.html
           500.html
           favicon.ico
+          robots.txt
           assets
         ]
       end

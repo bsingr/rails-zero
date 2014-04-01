@@ -1,6 +1,6 @@
 module CacheHelper
   def self.clean
-    excluded_files = %w[ 404.html 422.html 500.html favicon.ico ].map do |f|
+    excluded_files = %w[ 404.html 422.html 500.html favicon.ico robots.txt].map do |f|
       Rails.root.join('public', f).to_s
     end
     Dir[Rails.root.join('public', '**', '*').to_s].each do |f|

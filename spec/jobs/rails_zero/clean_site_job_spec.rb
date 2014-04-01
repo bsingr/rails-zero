@@ -25,5 +25,6 @@ describe RailsZero::CleanSiteJob do
     File.exists?(Rails.root.join('public', '422.html').to_s).should be_true
     File.exists?(Rails.root.join('public', '500.html').to_s).should be_true
     File.exists?(Rails.root.join('public', 'favicon.ico').to_s).should be_true
+    File.exists?(Rails.root.join('public', 'robots.txt').to_s).should be_true
   end
 end
