@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rails-zero (0.1.0)
+    rails-zero (0.1.1)
       actionpack-page_caching
       capybara
       rails (~> 4.0.2)
