@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe RailsZero::GenerateSiteJob do
-  let('old_file') { Rails.root.join('public', 'deploy', 'some_file').to_s }
-  let('html_file') { Rails.root.join('public', 'deploy', 'examples', "cached.html").to_s }
-  let('json_file') { Rails.root.join('public', 'deploy', 'examples', "cached.json").to_s }
+  let('old_file') { Rails.root.join('public', 'some_file').to_s }
+  let('html_file') { Rails.root.join('public', 'examples', "cached.html").to_s }
+  let('json_file') { Rails.root.join('public', 'examples', "cached.json").to_s }
   let('server') { Capybara::Server.new(Capybara.app).boot }
   let('url') { "http://#{server.host}:#{server.port}" }
   before do

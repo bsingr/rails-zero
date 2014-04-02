@@ -10,7 +10,7 @@ module RailsZero
     end
 
     initializer 'rails_zero.set_page_cache_dir' do |app|
-      app.config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public/deploy"
+      app.config.action_controller.page_cache_directory = "#{Rails.root.to_s}/public"
     end
   end
 end
