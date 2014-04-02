@@ -10,11 +10,16 @@ module RailsZero
 
     class GitDeployment
       attr_accessor :url,
-                    :git_binary
+                    :git_binary,
+                    :git_remote_ref
 
       def git_binary
         @git_binary ||=
           File.expand_path(File.join('..', '..', '..', 'bin', 'git'), __FILE__)
+      end
+
+      def git_remote_ref
+        @git_remote_ref ||= 'master'
       end
     end
 

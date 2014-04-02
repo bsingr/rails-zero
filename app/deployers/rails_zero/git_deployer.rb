@@ -42,7 +42,7 @@ module RailsZero
         commands << "#{git_binary} remote add origin #{git_remote_url}"
         commands << "#{git_binary} add --all ."
         commands << "#{git_binary} commit -m \"Deploy.\""
-        commands << "#{git_binary} push -u --force origin master"
+        commands << "#{git_binary} push -u --force origin master:#{git_remote_ref}"
         stdout_str, stderr_str, status = Open3.capture3(commands.join(" && "))
         raise RailsZero::GitError,
           "Cannot git-deploy #{extracted_package_path} (binary=#{git_binary} "\
@@ -59,6 +59,10 @@ module RailsZero
 
     def git_remote_url
       RailsZero.config.deployment.url
+    end
+
+    def git_remote_ref
+      RailsZero.config.deployment.git_remote_ref
     end
   end
 end

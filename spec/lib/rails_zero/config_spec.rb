@@ -17,6 +17,7 @@ describe RailsZero::Config do
   end
   its('deployment.git_binary') { should == File.expand_path(File.join('..', '..', '..', '..', 'bin', 'git'), __FILE__) }
   its('deployment.url') { should == nil }
+  its('deployment.git_remote_ref') { should == 'master' }
 
   describe '.site' do
     subject('site') { config.site }

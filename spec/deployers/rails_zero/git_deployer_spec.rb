@@ -7,6 +7,10 @@ describe RailsZero::GitDeployer do
   let('git_remote_url') { Rails.root.join('tmp', 'rspec', 'git_remote.git').to_s }
 
   before do
+    RailsZero.config.deployment.stub(:git_remote_ref).and_return('remote-test-branch')
+  end
+
+  before do
     FileUtils.rm_rf(dir)
   end
 
@@ -23,6 +27,7 @@ describe RailsZero::GitDeployer do
     File.exists?(dir).should be_true
   end
 
+  its('git_remote_ref') { should == 'remote-test-branch' }
   its('git_binary') { should == RailsZero.config.deployment.git_binary }
   its('git_remote_url') { should == RailsZero.config.deployment.url }
   its('package_path') { should == download_destination }
@@ -55,7 +60,7 @@ describe RailsZero::GitDeployer do
     subject.push_package
     
     Dir.chdir(git_remote_url) do
-      stdout_str, stderr_str, status = Open3.capture3('git log -p')
+      stdout_str, stderr_str, status = Open3.capture3('git log -p remote-test-branch')
       stdout_str.should include('Deploy.')
       stdout_str.should include('example-file')
       stdout_str.should include('example content')
