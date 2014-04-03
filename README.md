@@ -62,7 +62,7 @@ The following script reads the content of your private key from `~/.ssh/id_rsa_r
 
     echo "RAILS_ZERO_GIT_DEPLOYER_SSH_KEY_CONTENT=\"$(perl -p -e 's/\n/\\n/' ~/.ssh/id_rsa_rails_zero_deploy)\"" >> .env
 
-For heroku I recommend using (heroku-config)[https://github.com/ddollar/heroku-config] keep your local `.env` file synchronized with heroku (via push / pull).
+For heroku I recommend using [heroku-config](https://github.com/ddollar/heroku-config) keep your local `.env` file synchronized with heroku (via push / pull).
 
 ## Origin
 
